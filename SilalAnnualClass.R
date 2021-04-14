@@ -21,11 +21,11 @@ library(dplyr)
 library(viridis)
 library(RColorBrewer)
 library(ggsn)
-setwd("C:\\UserData\\wellingm\\OneDrive - Australian National University/DEAfrica Outputs")
+setwd("")
 set.seed(1)
 
 #load the 2019 geomedian
-SilalAnn <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\Annual_Geomeds\\Silalatshani2019sMAD.tif")
+SilalAnn <- stack(".tif")
 
 summary(SilalAnn)
 s2bands <- list("green", "red", "blue", "nir", "swir_1", "swir_2", "SMAD", "NDVI", "NDWI", "BSI")
@@ -35,7 +35,7 @@ SilalAnn
 
 
 #load training polygons
-SilalTrain <- readOGR("C:\\UserData\\wellingm\\OneDrive - Australian National University\\QGIS\\Silalatshani.shp")
+SilalTrain <- readOGR(".shp")
 summary(SilalTrain)
 plot(SilalTrain)
 SilalTrain$id <- as.factor(SilalTrain$id)
@@ -176,7 +176,7 @@ grid.arrange(SilalSMAD, SilalMapGGclass, ncol=2)
 grid.arrange(KnMapGGprob, SilalMapGGprob, ncol=2)
 
 #' Load WaPOR
-Africa <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\RS_FebIssue\\WaPOR\\L1_LCC_19.tif")
+Africa <- stack(".tif")
 Africa
 
 #' Crop WaPOR to area
