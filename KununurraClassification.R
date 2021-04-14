@@ -27,18 +27,18 @@ library(sf)
 library(dplyr)
 library(rfinterval)
 library(spatialEco)
-setwd("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs")
+setwd("")
 set.seed(1)
 
 #load the 2017 geomedian
-KnGM <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs/ls8gm_tmad/Kununurra_2017_gm.tif")
+KnGM <- stack(".tif")
 ls8bands <- list("blue", "green", "red", "nir", "swir1", "swir2", "NDVI", "NDWI", "BSI", "SMAD","EMAD", "bcdev")
 KnGM <- setNames(KnGM, ls8bands)
 summary(KnGM)
 KnPlot <- plotRGB(KnGM, r=3, g=2, b=1, stretch="hist")
 
 #load training polygons
-KnTrain <- readOGR("C:\\UserData\\wellingm\\OneDrive - Australian National University\\QGIS/Kununurra_3577.shp")
+KnTrain <- readOGR(".shp")
 summary(KnTrain)
 plot(KnTrain)
 KnTrain$Class <- as.factor(KnTrain$id)
@@ -258,7 +258,7 @@ grid.arrange(KnRGB,KnNDVI,KnSMAD,ncol=3)
 grid.arrange(KnRGB,KnMapGGclass, ncol=2)
 
 #' Aquastat
-Astat <- raster("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\RS_FebIssue\\WaPOR\\gmia_v5_aei_pct.asc")
+Astat <- raster(".asc")
 projection(Astat) <- "+init=EPSG:4326"
 Knaoi <- extent(100,170,-50,0)
 KnAstat <- crop(Astat,Knaoi)
@@ -277,7 +277,7 @@ KnAstatdf <- as.data.frame(KnAstatPrj, xy=TRUE)
 summary(KnAstatdf)
 
 #' Aquastat categorise for plotting
-KnGMLarge <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\KnDS\\KnGmLARGE.tif")
+KnGMLarge <- stack(".tif")
 KnGMLarge
 KnAstatdf$gmia_pct_cat <- cut(KnAstatdf$gmia_v5_aei_pct,
                                  breaks=c(-Inf,1, 5,10,20,35,50,75,100),
