@@ -20,11 +20,11 @@ library(dplyr)
 library(lattice)
 library(mapproj)
 library(ggsn)
-setwd("C:\\UserData\\wellingm\\OneDrive - Australian National University/DEAfrica Outputs")
+setwd("")
 set.seed(1)
 
 #load the 2019 geomedian
-LungAnn <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\Annual_Geomeds\\Lungwalala2019sMAD.tif")
+LungAnn <- stack(".tif")
 LungAnn
 summary(LungAnn)
 s2bands <- list("green", "red", "blue", "nir", "swir_1", "swir_2", "SMAD", "NDVI", "NDWI", "BSI")
@@ -33,7 +33,7 @@ LungAnnplot <- plotRGB(LungAnn, r=2, g=1, b=3, stretch="hist")
 summary(LungAnn)
 
 #load training polygons
-LungTrain <- readOGR("C:\\UserData\\wellingm\\OneDrive - Australian National University\\QGIS\\Lungwalala.shp")
+LungTrain <- readOGR(".shp")
 summary(LungTrain)
 plot(LungTrain)
 LungTrain$Class <- as.factor(LungTrain$id)
@@ -189,7 +189,7 @@ grid.arrange(SilalQtrVIPgg, NabuQtrVIPgg, ncol=2)
 grid.arrange(LungQtrVIPgg, ncol=2)
 
 #' Load WaPOR
-Africa <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\RS_FebIssue\\WaPOR\\L1_LCC_19.tif")
+Africa <- stack(".tif")
 Africa
 
 #' Crop WaPOR to area
