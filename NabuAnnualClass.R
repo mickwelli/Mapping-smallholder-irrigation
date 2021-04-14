@@ -18,10 +18,10 @@ library(dplyr)
 library(viridis)
 library(gridExtra)
 library(ggsn)
-setwd("C:\\UserData\\wellingm\\OneDrive - Australian National University/DEAfrica Outputs")
+setwd("")
 set.seed(1)
 #load the 2019 geomedian
-NabuAnn <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\Annual_Geomeds\\Nabusenga2019sMAD.tif")
+NabuAnn <- stack(".tif")
 
 summary(NabuAnn)
 s2bands <- list("green", "red", "blue", "nir", "swir_1", "swir_2", "SMAD", "NDVI", "NDWI", "BSI")
@@ -30,7 +30,7 @@ NabuAnnplot <- plotRGB(NabuAnn, r=2, g=1, b=3, stretch="hist")
 summary(NabuAnn)
 
 #load training polygons
-NabuTrain <- readOGR("C:\\UserData\\wellingm\\OneDrive - Australian National University\\QGIS\\Nabusenga.shp")
+NabuTrain <- readOGR(".shp")
 summary(NabuTrain)
 plot(NabuTrain)
 NabuTrain$id <- as.factor(NabuTrain$id)
@@ -167,7 +167,7 @@ nabuNDVI
 grid.arrange(nabuRGB, nabuNDVI, nabuSMAD, ncol=3)
 
 #' Load WaPOR
-Africa <- stack("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\RS_FebIssue\\WaPOR\\L1_LCC_19.tif")
+Africa <- stack(".tif")
 Africa
 
 #' Crop WaPOR to area
@@ -258,7 +258,7 @@ conmatNabuWap <- confusionMatrix(NabuAnnWapTab)
 conmatNabuWap
 
 #' Aquastat
-Astat <- raster("C:\\UserData\\wellingm\\OneDrive - Australian National University\\DEAfrica Outputs\\RS_FebIssue\\WaPOR\\gmia_v5_aei_pct.asc")
+Astat <- raster(".asc")
 projection(Astat) <- "+init=EPSG:4326"
 Nabuaoi <- extent(0,100,-80,0)
 NabuAstat <- crop(Astat,Nabuaoi)
